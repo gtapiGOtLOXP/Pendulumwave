@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendulum Wave — Synchronization Simulator</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="3" r="2" fill="currentColor" opacity="0.4"/>
+            <line x1="11" y1="5" x2="7" y2="19" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="7" cy="20" r="2" fill="#a78bfa"/>
+            <line x1="11" y1="5" x2="15" y2="17" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="15" cy="18" r="2" fill="#60a5fa"/>
+          </svg>
+          <span>Pendulum Wave</span>
+        </div>
+        <a class="gh-link" href="https://github.com/yourusername/pendulum-wave" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+              -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2
+              -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82
+              .64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08
+              2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+              1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="canvas-wrapper">
+        <canvas id="pendulum-canvas"></canvas>
+        <div class="phase-badge" id="phase-badge">
+          <span class="phase-label">Cycle</span>
+          <span class="phase-value" id="phase-value">0%</span>
+        </div>
+      </div>
+
+      <aside class="controls-panel">
+        <section class="ctrl-section">
+          <h2 class="section-title">Simulation</h2>
+
+          <div class="ctrl-row">
+            <label for="nPend">Pendulums</label>
+            <div class="slider-wrap">
+              <input type="range" id="nPend" min="5" max="20" value="15" step="1" />
+              <span class="slider-val" id="nPendVal">15</span>
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <label for="speed">Speed</label>
+            <div class="slider-wrap">
+              <input type="range" id="speed" min="0.2" max="3" value="1" step="0.1" />
+              <span class="slider-val" id="speedVal">1.0×</span>
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <label for="amp">Amplitude</label>
+            <div class="slider-wrap">
+              <input type="range" id="amp" min="10" max="60" value="36" step="2" />
+              <span class="slider-val" id="ampVal">36°</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="ctrl-section">
+          <h2 class="section-title">Display</h2>
+          <div class="toggle-grid">
+            <button class="toggle-btn active" id="btnPlay" data-icon="⏸">Pause</button>
+            <button class="toggle-btn" id="btnReset" data-icon="↺">Reset</button>
+            <button class="toggle-btn active" id="btnTrails" data-icon="~">Trails</button>
+            <button class="toggle-btn" id="btnGrid" data-icon="⊞">Grid</button>
+          </div>
+        </section>
+
+        <section class="ctrl-section info-section">
+          <h2 class="section-title">About</h2>
+          <p class="info-text">
+            Each pendulum's length is tuned so it completes between
+            <strong>25–40 swings</strong> per cycle. They drift apart creating
+            waves, then re-sync every <strong>60 seconds</strong> of sim-time.
+          </p>
+          <div class="stat-row">
+            <div class="stat-card">
+              <span class="stat-label">Min swings</span>
+              <span class="stat-val">25</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Max swings</span>
+              <span class="stat-val">40</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Sync period</span>
+              <span class="stat-val">60s</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="src/physics.js"></script>
+  <script src="src/renderer.js"></script>
+  <script src="src/controls.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
