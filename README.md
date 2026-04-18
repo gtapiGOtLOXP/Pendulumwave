@@ -28,22 +28,6 @@ L = g · (T / 2π)²
 
 where `T = CYCLE_TIME / swings_i` and `g = 9.81 m/s²`.
 
-## Project Structure
-
-```
-pendulum-wave/
-├── index.html          # Entry point — markup and script includes
-├── src/
-│   ├── physics.js      # Period / length / angle calculations
-│   ├── renderer.js     # Canvas drawing (bobs, strings, trails, grid)
-│   ├── controls.js     # UI bindings — sliders, buttons, keyboard shortcuts
-│   └── style.css       # Dark-mode styles
-├── assets/
-│   └── favicon.svg     # SVG favicon
-└── docs/
-    └── screenshot.png  # (add your own)
-```
-
 ## Controls
 
 | Control | Description |
